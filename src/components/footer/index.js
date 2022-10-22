@@ -108,7 +108,7 @@ export default function Footer() {
               sx={{ mt: 4, mb: 4 }}
               variant="contained"
             >
-              Subscribe
+              Send
             </Button>
           </Stack>
         </Grid>

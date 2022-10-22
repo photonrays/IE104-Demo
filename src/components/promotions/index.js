@@ -1,9 +1,11 @@
-import { Slide } from "@mui/material";
+import { createTheme, Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
-import { MessageText, PromotionsContainer } from "./style";
 
 const messages = ["20% off on your first order!", "New product has arrived!"];
+
+const theme = createTheme({});
+
 export default function Promotions() {
   const containerRef = useRef();
   const [show, setShow] = useState(true);
@@ -13,10 +15,7 @@ export default function Promotions() {
       setShow(false);
     }, 3000);
     const intervalId = setInterval(() => {
-      // get next message
       setMessageIndex((i) => (i + 1) % messages.length);
-
-      // slide the message in
       setShow(true);
 
       setTimeout(() => {
@@ -30,7 +29,21 @@ export default function Promotions() {
   }, []);
 
   return (
-    <PromotionsContainer ref={containerRef} overflow="hidden">
+    <Box
+      ref={containerRef}
+      overflow="hidden"
+      sx={{
+        [theme.breakpoints.up("md")]: {
+          padding: "40px 0px 40px 0px",
+        },
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "20px 0px 20px 0px",
+        overflow: "hidden",
+        background: "#9E7676",
+      }}
+    >
       <Slide
         direction={show ? "left" : "right"}
         in={show}
@@ -41,9 +54,20 @@ export default function Promotions() {
         }}
       >
         <Box display="flex" justifyContent="center" alignItems="center">
-          <MessageText>{messages[messageIndex]}</MessageText>
+          <Typography
+            sx={{
+              fontFamily: '"Montez", "cursive"',
+              [theme.breakpoints.up("md")]: {
+                fontSize: "3rem",
+              },
+              color: "#fff",
+              fontSize: "1.5rem",
+            }}
+          >
+            {messages[messageIndex]}
+          </Typography>
         </Box>
       </Slide>
-    </PromotionsContainer>
+    </Box>
   );
 }
