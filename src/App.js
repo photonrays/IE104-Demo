@@ -1,11 +1,10 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
-import ResponsiveAppBar from "./components/appbar";
+import { Container, Stack } from "@mui/material";
+import Appbar from "./components/Appbar";
 import { ThemeProvider } from "@mui/system";
 import theme from "./theme";
-import Banner from "./components/banner";
-import Products from "./components/product";
-import Footer from "./components/footer";
-import Promotions from "./components/promotions";
+import Banner from "./components/Banner";
+import Products from "./components/Products";
+import Footer from "./components/Footer";
 import { useEffect } from "react";
 
 function App() {
@@ -22,9 +21,8 @@ function App() {
         }}
       >
         <Stack>
-          <ResponsiveAppBar />
+          <Appbar />
           <Banner />
-          {/* <Promotions /> */}
           <Products />
           <Footer />
         </Stack>
